@@ -1,0 +1,17 @@
+[package]
+name = "RustOperatingSystem"
+version = "0.1.0"
+edition = "2021"
+[build]
+target = "x86_64-rust_os.json"
+[target.x86_64-rust_os]
+linker = "rust-lld"
+runner = "qemu-system-x86_64 -drive format=raw,file=target/x86_64-rust_os/debug/rust_os.bin"
+[dependencies]
+linked_list_allocator = "0.10.5"
+[profile.release]
+panic = "abort"
+[profile.dev]
+panic = "abort"
+[profile.test]
+panic = "abort"
